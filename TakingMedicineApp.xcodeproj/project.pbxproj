@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA34B1FC265A460A002D6568 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34B1FB265A460A002D6568 /* DetailViewController.swift */; };
 		FA4AB07F265950A9002A8B88 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB07E265950A9002A8B88 /* TableViewCell.swift */; };
 		FA4AB082265950DB002A8B88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB081265950DB002A8B88 /* ViewController.swift */; };
 		FAED1F8A264D109A00127902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED1F89264D109A00127902 /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA34B1FB265A460A002D6568 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FA4AB07E265950A9002A8B88 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		FA4AB081265950DB002A8B88 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FAED1F86264D109A00127902 /* TakingMedicineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakingMedicineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +71,7 @@
 				FAED1F97264D109B00127902 /* Info.plist */,
 				FA4AB07E265950A9002A8B88 /* TableViewCell.swift */,
 				FA4AB081265950DB002A8B88 /* ViewController.swift */,
+				FA34B1FB265A460A002D6568 /* DetailViewController.swift */,
 			);
 			path = TakingMedicineApp;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				FAED1F8E264D109A00127902 /* AddViewController.swift in Sources */,
 				FAED1F8A264D109A00127902 /* AppDelegate.swift in Sources */,
 				FA4AB07F265950A9002A8B88 /* TableViewCell.swift in Sources */,
+				FA34B1FC265A460A002D6568 /* DetailViewController.swift in Sources */,
 				FA4AB082265950DB002A8B88 /* ViewController.swift in Sources */,
 				FAED1F8C264D109A00127902 /* SceneDelegate.swift in Sources */,
 			);
