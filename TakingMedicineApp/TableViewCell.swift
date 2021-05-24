@@ -10,6 +10,7 @@ import UIKit
 class TableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var alarmButton: UIButton!
     @IBOutlet weak var medicineNameLabel: UILabel!
     
     @IBOutlet weak var alarmTimeLabel: UILabel!
@@ -25,6 +26,7 @@ class TableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @IBAction func alarmButton(_ sender: UIButton) {
-    }
+//    @IBAction func alarmButtonClick(_ sender: UIButton) {
+//        sender.setImage(UIImage(systemName: "alarm"), for: .normal)
+//    }
 }

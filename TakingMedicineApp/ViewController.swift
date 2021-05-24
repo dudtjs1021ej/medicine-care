@@ -10,8 +10,9 @@ import UIKit
 var medicineNames = ["약이름을 입력해주세요"] //약이름 배열
 var date = DateComponents(hour:0, minute: 0)
 var alarmTimes = [date] // 복용시간 배열
+var alarmNum = 1
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UNUserNotificationCenterDelegate {
 
     @IBOutlet weak var alarmTableView: UITableView!
     let userNotificationCenter = UNUserNotificationCenter.current() //알림
@@ -19,10 +20,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //userNotificationCenter.delegate = self
+        
+        alarmTableView.rowHeight = 100 //tableView 높이를 100으로
+        alarmTableView.layer.cornerRadius = 12.0 //tableView를 둥글게
         alarmTableView.dataSource = self
         
         requestNotificationAutorization() //알림 허가 받기
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkTime), userInfo: nil, repeats: true) //1초마다 타이머로 알람 울려야 하는 시간인지 체크
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkAddAlarm), userInfo: nil, repeats: true) //1초마다 알람이 추가 되었는지 체크
     }
 
 }
@@ -55,18 +61,20 @@ extension ViewController:UITableViewDataSource{
         let alarmTime = alarmTimes[(indexPath as NSIndexPath).row]
         let alarmTimeString = "\(String(alarmTime.hour!))시  \(String(alarmTime.minute!))분"
         cell.alarmTimeLabel.text = alarmTimeString
-        sendNotification(index: (indexPath as NSIndexPath).row) //알람을 보냄
+       // sendNotification(index: (indexPath as NSIndexPath).row) //알람을 보냄
         return cell
         
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 500
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 300.0
+//    }
 }
 
+
+
+
 extension ViewController{
-    @objc func checkTime(){
+    @objc func checkAddAlarm(){
 //        for i in 0..<alarmTimes.count{
 //            if i != 0{ //첫번째 셀은 예시이므로 무시
 //                let format = DateFormatter()
@@ -81,7 +89,15 @@ extension ViewController{
 //
 //
 //        }
+    
 //
+       
+        let alarmCount = medicineNames.count
+       // print("alarmNum : \(alarmNum) alarmCount : \(alarmCount)")
+        if alarmNum != alarmCount{
+            sendNotification(index: alarmNum)
+        }
+        
    }
 }
 
@@ -105,14 +121,17 @@ extension ViewController{
             let notificationContent = UNMutableNotificationContent()
             notificationContent.title = "약 복용 알림"
             notificationContent.body = "\(alarmTimes[index].hour!)시 \(alarmTimes[index].minute!)분에 \(medicineNames[index])을(를) 드실 시간이에요!"
+            notificationContent.badge = 1 //알람 숫자 쌓이게함
 
-            print("\(String(alarmTimes[index].hour!))시 \(String(alarmTimes[index].minute!))분 알람 예정 ")
+          
 
             let trigger = UNCalendarNotificationTrigger(dateMatching: alarmTimes[index], repeats: false)
             // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false) //1초뒤에 알람가게 trigger설정
 
 
-            let request = UNNotificationRequest(identifier: "alarmRequest", content: notificationContent, trigger: trigger) //알람 요청
+            print("\(alarmNum) : \(String(alarmTimes[index].hour!))시 \(String(alarmTimes[index].minute!))분 알람 예정 ")
+            let request = UNNotificationRequest(identifier: "alarmRequest\(alarmNum)", content: notificationContent, trigger: trigger) //알람 요청 (알람을 구분하기 위해 identifier를 다르게 설정)
+            alarmNum+=1
 
             userNotificationCenter.add(request){
                 error in
@@ -124,6 +143,27 @@ extension ViewController{
     }
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.badge, .sound])
+    }
+}
+
+
+class AppDelate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        UNUserNotificationCenter.current().delegate = self
+        return true
+    }
+}
 extension ViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sgDetail"{
