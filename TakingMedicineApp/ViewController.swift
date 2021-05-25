@@ -8,8 +8,12 @@
 import UIKit
 
 var medicineNames = ["약이름을 입력해주세요"] //약이름 배열
+
 var date = DateComponents(hour:0, minute: 0)
 var alarmTimes = [date] // 복용시간 배열
+
+var medicineTake = [false] //약 복용상태 배열 (true면 복용 완료/false면 복용 전)
+
 var alarmNum = 1
 
 class ViewController: UIViewController, UNUserNotificationCenterDelegate {
@@ -65,9 +69,6 @@ extension ViewController:UITableViewDataSource{
         return cell
         
     }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 300.0
-//    }
 }
 
 
@@ -120,7 +121,7 @@ extension ViewController{
         if index != 0{ //첫번째는 알람은 예시이므로 무시
             let notificationContent = UNMutableNotificationContent()
             notificationContent.title = "약 복용 알림"
-            notificationContent.body = "\(alarmTimes[index].hour!)시 \(alarmTimes[index].minute!)분에 \(medicineNames[index])을(를) 드실 시간이에요!"
+            notificationContent.body = "\(alarmTimes[index].hour!)시 \(alarmTimes[index].minute!)분에 \(medicineNames[index])을(를) 드실 시간이에요. \n컵 사진을 찍어 인증을 해주세요!"
             notificationContent.badge = 1 //알람 숫자 쌓이게함
 
           
@@ -166,15 +167,30 @@ class AppDelate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDel
 }
 extension ViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "sgDetail"{
+        if segue.identifier == "sgDetail"{ //detailViewController일 때
             let cell = sender as! UITableViewCell
             let index = self.alarmTableView.indexPath(for: cell)
             let detailViewController = segue.destination as! DetailViewController
             let selectIndex = ((index as NSIndexPath?)?.row)!
-            detailViewController.receiveMedicineNameTime(selectIndex:selectIndex)
+            detailViewController.receiveSelectIndex(selectIndex:selectIndex)
              //detailViewController로 선택한 셀의 index를 보냄
         }
+        
+        if segue.identifier == "sgTake"{ //imageClassificationViewController일 때
+            if sender is UIButton{
+                let button = sender as! UIButton
+                let contentView = button.superview
+                let cell = contentView?.superview as! UITableViewCell
+                let index = self.alarmTableView.indexPath(for: cell)
+                let imageClassificationViewController = segue.destination as! ImageClassificationViewController
+                let selectIndex = ((index as NSIndexPath?)?.row)!
+                imageClassificationViewController.receiveSelectIndex(selectIndex:selectIndex) //imageClassificationViewController로 선택한 셀의 인덱스를 보냄
+               
+            }
+        }
+       
     }
+   
 }
 
 

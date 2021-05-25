@@ -19,6 +19,10 @@ class AddViewController: UIViewController {
     @IBOutlet weak var medicineTextField: UITextField!
     
     
+    @IBOutlet weak var myView: UIView!
+    
+    @IBOutlet weak var addButton: UIButton!
+    
     var datePickerHour: Int! //선택한 시간
     var datePickerMinute: Int! //선택한 분
     
@@ -28,6 +32,9 @@ class AddViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        myView.layer.cornerRadius = 12
+        addButton.layer.cornerRadius = 12
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
         view.addGestureRecognizer(tapGesture) //키보드 사라지게 함
@@ -52,6 +59,13 @@ class AddViewController: UIViewController {
         date.minute = datePickerMinute
         alarmTimes.append(date) //datePicker로 입력한 시간,분 alarmTimes에 append
         
+        medicineTake.append(false) //약을 복용하지 않은 것으로 넣음
+        
+        _ = navigationController?.popViewController(animated: true) //pop해서 뒤로감
+    }
+    
+    
+    @IBAction func cancelButtonTouch(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true) //pop해서 뒤로감
     }
     

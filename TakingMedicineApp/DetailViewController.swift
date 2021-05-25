@@ -12,6 +12,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
 
     @IBOutlet weak var medicineNameTextField: UITextField!
+    
+    
+    @IBOutlet weak var myView: UIView!
+    
     var receiveIndex : Int?
     
     var datePickerHour: Int! //수정할 시간
@@ -19,6 +23,8 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        myView.layer.cornerRadius = 12
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
         view.addGestureRecognizer(tapGesture) //키보드 사라지게 함
@@ -47,12 +53,18 @@ class DetailViewController: UIViewController {
    }
     
     
+    @IBAction func cancelButton(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true) //pop해서 뒤로감
+    }
+    
+    
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         datePickerHour = sender.calendar.component(.hour, from: sender.date) //선택한 시간
         datePickerMinute = sender.calendar.component(.minute, from: sender.date) //선택한 분
     }
     
-    func receiveMedicineNameTime(selectIndex:Int){
+    //몇번째 셀을 선택했는지 index를 받는 함수
+    func receiveSelectIndex(selectIndex:Int){
         receiveIndex = selectIndex
         
     }

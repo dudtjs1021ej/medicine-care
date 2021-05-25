@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA1794C1265B99D300BDD4E6 /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1794C0265B99D300BDD4E6 /* ImageClassificationViewController.swift */; };
 		FA34B1FC265A460A002D6568 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA34B1FB265A460A002D6568 /* DetailViewController.swift */; };
+		FA3AC68D265CEDC400DA693E /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = FA3AC68C265CEDC400DA693E /* MobileNetV2.mlmodel */; };
 		FA4AB07F265950A9002A8B88 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB07E265950A9002A8B88 /* TableViewCell.swift */; };
 		FA4AB082265950DB002A8B88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB081265950DB002A8B88 /* ViewController.swift */; };
 		FAED1F8A264D109A00127902 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED1F89264D109A00127902 /* AppDelegate.swift */; };
@@ -19,7 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA1794C0265B99D300BDD4E6 /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
 		FA34B1FB265A460A002D6568 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FA3AC68C265CEDC400DA693E /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MobileNetV2.mlmodel; path = ../../../../Downloads/MobileNetV2.mlmodel; sourceTree = "<group>"; };
 		FA4AB07E265950A9002A8B88 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		FA4AB081265950DB002A8B88 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FAED1F86264D109A00127902 /* TakingMedicineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakingMedicineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +66,7 @@
 		FAED1F88264D109A00127902 /* TakingMedicineApp */ = {
 			isa = PBXGroup;
 			children = (
+				FA3AC68C265CEDC400DA693E /* MobileNetV2.mlmodel */,
 				FAED1F89264D109A00127902 /* AppDelegate.swift */,
 				FAED1F8B264D109A00127902 /* SceneDelegate.swift */,
 				FAED1F8D264D109A00127902 /* AddViewController.swift */,
@@ -72,6 +77,7 @@
 				FA4AB07E265950A9002A8B88 /* TableViewCell.swift */,
 				FA4AB081265950DB002A8B88 /* ViewController.swift */,
 				FA34B1FB265A460A002D6568 /* DetailViewController.swift */,
+				FA1794C0265B99D300BDD4E6 /* ImageClassificationViewController.swift */,
 			);
 			path = TakingMedicineApp;
 			sourceTree = "<group>";
@@ -148,10 +154,12 @@
 			files = (
 				FAED1F8E264D109A00127902 /* AddViewController.swift in Sources */,
 				FAED1F8A264D109A00127902 /* AppDelegate.swift in Sources */,
+				FA3AC68D265CEDC400DA693E /* MobileNetV2.mlmodel in Sources */,
 				FA4AB07F265950A9002A8B88 /* TableViewCell.swift in Sources */,
 				FA34B1FC265A460A002D6568 /* DetailViewController.swift in Sources */,
 				FA4AB082265950DB002A8B88 /* ViewController.swift in Sources */,
 				FAED1F8C264D109A00127902 /* SceneDelegate.swift in Sources */,
+				FA1794C1265B99D300BDD4E6 /* ImageClassificationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
