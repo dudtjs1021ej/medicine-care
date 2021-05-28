@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="QPJ-rz-QBM">
             <objects>
-                <viewController id="dxV-C2-jLm" customClass="ViewController" customModule="TakingMedicineApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dxV-C2-jLm" customClass="ViewController" customModule="Medicine_Care" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uwJ-q4-7hF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="alarmCell" rowHeight="106" id="Q4X-Fn-qAv" customClass="TableViewCell" customModule="TakingMedicineApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="alarmCell" rowHeight="106" id="Q4X-Fn-qAv" customClass="TableViewCell" customModule="Medicine_Care" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q4X-Fn-qAv" id="0l2-5W-Qcv">
@@ -50,7 +50,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJF-66-5aD">
                                                     <rect key="frame" x="230" y="38" width="58" height="24.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="tintColor" red="0.67797116570000004" green="0.83018777880000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="tintColor" red="0.3045014881" green="0.56382865650000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal">
                                                         <imageReference key="image" image="camera.on.rectangle.fill" catalog="system" symbolScale="large"/>
                                                     </state>
@@ -109,7 +109,7 @@
         <!--Add View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="AddViewController" customModule="TakingMedicineApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="AddViewController" customModule="Medicine_Care" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,7 +202,7 @@
         <!--Image Classification View Controller-->
         <scene sceneID="ukG-wG-TJu">
             <objects>
-                <viewController id="VID-Nu-Hsb" customClass="ImageClassificationViewController" customModule="TakingMedicineApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VID-Nu-Hsb" customClass="ImageClassificationViewController" customModule="Medicine_Care" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nsy-79-J1G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -297,7 +297,7 @@
         <!--Detail View Controller-->
         <scene sceneID="bUf-1F-1sa">
             <objects>
-                <viewController id="O01-zh-bTg" customClass="DetailViewController" customModule="TakingMedicineApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="O01-zh-bTg" customClass="DetailViewController" customModule="Medicine_Care" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dhg-Cc-Zab">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

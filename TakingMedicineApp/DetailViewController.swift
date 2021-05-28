@@ -44,10 +44,14 @@ class DetailViewController: UIViewController {
         medicineNameTextField.resignFirstResponder()
     }
     
+    //확인버튼을 누르면 알람의 내용이 수정되는 함수
     @IBAction func modifyCell(_ sender: UIButton) {
+        //약이름과 알람 시간 수정
         medicineNames[receiveIndex!] = medicineNameTextField.text!
         alarmTimes[receiveIndex!].hour = datePickerHour
         alarmTimes[receiveIndex!].minute = datePickerMinute
+        
+        cancelAlarmIndex = receiveIndex! //전의 알람을 삭제하기 위해 인덱스를 보냄
         
         _ = navigationController?.popViewController(animated: true) //pop해서 뒤로감
    }
@@ -68,15 +72,5 @@ class DetailViewController: UIViewController {
         receiveIndex = selectIndex
         
     }
-//    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -26,7 +26,7 @@
 		FA3AC68C265CEDC400DA693E /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MobileNetV2.mlmodel; path = ../../../../Downloads/MobileNetV2.mlmodel; sourceTree = "<group>"; };
 		FA4AB07E265950A9002A8B88 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		FA4AB081265950DB002A8B88 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FAED1F86264D109A00127902 /* TakingMedicineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakingMedicineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAED1F86264D109A00127902 /* Medicine Care.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Medicine Care.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAED1F89264D109A00127902 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAED1F8B264D109A00127902 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FAED1F8D264D109A00127902 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 		FAED1F87264D109A00127902 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FAED1F86264D109A00127902 /* TakingMedicineApp.app */,
+				FAED1F86264D109A00127902 /* Medicine Care.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,7 +99,7 @@
 			);
 			name = TakingMedicineApp;
 			productName = TakingMedicineApp;
-			productReference = FAED1F86264D109A00127902 /* TakingMedicineApp.app */;
+			productReference = FAED1F86264D109A00127902 /* Medicine Care.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -314,7 +314,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = LimYoungSun.TakingMedicineApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Medicine Care";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -333,7 +333,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = LimYoungSun.TakingMedicineApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Medicine Care";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
