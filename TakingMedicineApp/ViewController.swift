@@ -7,7 +7,7 @@
 
 import UIKit
 
-var medicineNames = ["약이름을 입력해주세요"] //약이름 배열
+var medicineNames = ["약이름"] //약이름 배열
 
 var date = DateComponents(hour:0, minute: 0)
 var alarmTimes = [date] // 복용시간 배열
@@ -16,6 +16,7 @@ var medicineTake = [false] //약 복용상태 배열 (true면 복용 완료/fals
 
 var alarmNum = 1 //알람 개수
 var cancelAlarmIndex = -1 //삭제할 알람의 인덱스 (-1이면 삭제할 알람이 없음)
+var cancelAlarmIdentifier = ""
 
 class ViewController: UIViewController, UNUserNotificationCenterDelegate {
 
@@ -44,8 +45,9 @@ extension ViewController{
     override func viewWillAppear(_ animated: Bool) {
         
         if cancelAlarmIndex != -1{ //삭제할 알람의 인덱스가 생겼으면
-            userNotificationCenter.removePendingNotificationRequests(withIdentifiers: ["alarmRequest\(cancelAlarmIndex)"]) //그 전 알람 취소
-            print("\(cancelAlarmIndex) : 알람 취소")
+        
+            userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [cancelAlarmIdentifier]) //그 전 알람 취소
+            print("\(cancelAlarmIdentifier) : 수정 알람 취소")
             
             sendModifyNotification(index: cancelAlarmIndex) //수정된 알람 생성
             cancelAlarmIndex = -1
@@ -56,6 +58,30 @@ extension ViewController{
 }
 
 extension ViewController:UITableViewDelegate{
+    //테이블뷰 스와이프해서 삭제하는 함수
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let identifier = "\(alarmTimes[indexPath.row].hour!)\(alarmTimes[indexPath.row].minute!)\(medicineNames[indexPath.row])"
+            userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [identifier]) //알람 취소
+            print("\(identifier) : 삭제 알람 취소")
+            
+            medicineNames.remove(at: indexPath.row)
+            alarmTimes.remove(at: indexPath.row)
+            medicineTake.remove(at: indexPath.row) //약이름, 알람시간, 약복용상태 배열에서 모두 삭제
+            
+            
+            
+            alarmNum -= 1
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        }
+    }
+    //테이블뷰 삭제 코멘트 delete -> 삭제로 바꾸는 함수
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "삭제"
+    }
+
     
 }
 
@@ -109,6 +135,18 @@ extension ViewController{
             sendNotification(index: alarmNum)
         }
         
+        let calander = Calendar.current
+        let date = Date()
+        let currentHour = calander.component(.hour, from: date)
+        let currentMinute = calander.component(.minute, from: date)
+        if (currentHour == 0 && currentMinute == 0){ //현재시간이 12시 00분이 되면(다음날이 되면) 약 복용상태 모두 초기화
+            for i in 0..<medicineTake.count{
+                medicineTake[i] = false //모두 복용전으로 바꿈
+            }
+        }
+        
+
+        
    }
 }
 
@@ -138,8 +176,10 @@ extension ViewController{
             // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false) //1초뒤에 알람가게 trigger설정
 
 
-            print("\(index) : \(String(alarmTimes[index].hour!))시 \(String(alarmTimes[index].minute!))분 알람 예정 ")
-            let request = UNNotificationRequest(identifier: "alarmRequest\(index)", content: notificationContent, trigger: trigger) //알람 요청 (알람을 구분하기 위해 identifier를 다르게 설정)
+            print("\(alarmTimes[index].hour!)\(alarmTimes[index].minute!)\(medicineNames[index]) : \(String(alarmTimes[index].hour!))시 \(String(alarmTimes[index].minute!))분 알람 예정 ")
+            
+            let identifier = "\(alarmTimes[index].hour!)\(alarmTimes[index].minute!)\(medicineNames[index])"
+            let request = UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: trigger) //알람 요청 (알람을 구분하기 위해 identifier를 다르게 설정)
             alarmNum+=1
 
             userNotificationCenter.add(request){
@@ -161,8 +201,10 @@ extension ViewController{
 
             let trigger = UNCalendarNotificationTrigger(dateMatching: alarmTimes[index], repeats: false)
             
-            print("\(index) : \(String(alarmTimes[index].hour!))시 \(String(alarmTimes[index].minute!))분 수정 알람 예정 ")
-            let request = UNNotificationRequest(identifier: "alarmRequest\(index)", content: notificationContent, trigger: trigger) //알람 요청
+            print("\(alarmTimes[index].hour!)\(alarmTimes[index].minute!)\(medicineNames[index]): \(String(alarmTimes[index].hour!))시 \(String(alarmTimes[index].minute!))분 수정 알람 예정 ")
+            
+            let identifier = "\(alarmTimes[index].hour!)\(alarmTimes[index].minute!)\(medicineNames[index])"
+            let request = UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: trigger) //알람 요청
 
             userNotificationCenter.add(request){
                 error in
@@ -190,13 +232,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
 }
 
-
-//class AppDelate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
-//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-//        UNUserNotificationCenter.current().delegate = self
-//        return true
-//    }
-//}
 extension ViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sgDetail"{ //detailViewController일 때

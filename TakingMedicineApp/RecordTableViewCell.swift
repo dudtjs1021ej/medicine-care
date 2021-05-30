@@ -1,23 +1,21 @@
 //
-//  TableViewCell.swift
+//  RecordTableViewCell.swift
 //  TakingMedicineApp
 //
-//  Created by 임영선 on 2021/05/22.
+//  Created by 임영선 on 2021/05/29.
 //
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
-    
-    
-    @IBOutlet weak var alarmButton: UIButton!
+class RecordTableViewCell: UITableViewCell {
+
     @IBOutlet weak var medicineNameLabel: UILabel!
     
-    @IBOutlet weak var alarmTimeLabel: UILabel!
+    @IBOutlet weak var checkImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -25,4 +23,5 @@ class TableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
 }

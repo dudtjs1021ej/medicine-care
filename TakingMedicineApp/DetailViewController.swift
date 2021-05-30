@@ -47,6 +47,8 @@ class DetailViewController: UIViewController {
     //확인버튼을 누르면 알람의 내용이 수정되는 함수
     @IBAction func modifyCell(_ sender: UIButton) {
         //약이름과 알람 시간 수정
+        cancelAlarmIdentifier = "\(alarmTimes[receiveIndex!].hour!)\(alarmTimes[receiveIndex!].minute!)\(medicineNames[receiveIndex!])" //삭제할 알람 identifier 저장
+        
         medicineNames[receiveIndex!] = medicineNameTextField.text!
         alarmTimes[receiveIndex!].hour = datePickerHour
         alarmTimes[receiveIndex!].minute = datePickerMinute
