@@ -12,7 +12,15 @@
 #### 1. 알림 추가, 삭제, 수정 기능 
 ![image](https://user-images.githubusercontent.com/77915491/126583424-86abfe50-b82b-4cda-ae3e-2925613cfeda.png)
 
-- 원하는 시간과 약 이름을 설정하여 알림을 추가할 수 있다. 설정한 시간에 알림이 가고 해당 셀을 눌러 수정 및 스와이프로 삭제 가능하다.
+- 원하는 시간과 약 이름을 설정하여 알림을 추가할 수 있다. 해당 셀을 눌러 수정 및 스와이프로 삭제 가능하다.
+
+<p align="center">
+  <image src = "https://user-images.githubusercontent.com/77915491/152641057-70818158-7639-43b1-8fdf-114bf9c65ae5.png" width="20%">
+</p>
+
+- 설정한 시간이 알림을 받을 수 있다.
+  
+   
 
 #### 2. 복약 인증 기능
 
